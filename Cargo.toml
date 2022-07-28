@@ -1,0 +1,23 @@
+[package]
+name = "shellcodeLoader"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.release]
+opt-level = "z"     # Optimize for size.
+lto = "true"         # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = "abort"     # Abort on panic
+strip = "symbols"   # Strip symbols from binary
+
+[dependencies]
+dynamic-winapi = { git = "https://github.com/postrequest/dynamic-winapi", branch = "main" }
+winapi = { version = "0.3", features = [] }
+aes = "0.7.5"
+cfb-mode = "0.7.1"
+obfstr = "0.3.0"
+
+sysinfo = "0.24.5"
+wmi = "0.11.0"
+gethostname = "0.2.3"
